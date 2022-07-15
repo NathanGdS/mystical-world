@@ -1,56 +1,39 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateSpecieDto } from './dto/create-specie.dto';
-import { UpdateSpecieDto } from './dto/update-specie.dto';
-import { Specie } from './entities/specie.entity';
+import { Injectable } from '@nestjs/common';
+import { CreateSpecieInput, CreateSpecieOutput, CreateSpecieUseCase } from '../core/application/Specie/CreateSpecie/CreateSpecieUseCase';
+import { FindAllSpecieOutput, FindAllSpeciesUseCase } from '../core/application/Specie/FindAllSpecie/FindAllSpecieUseCase';
+import { FindOneSpecieOutPut, FindOneSpecieUseCase } from '../core/application/Specie/FindOneSpecie/FindOneSpecieUseCase';
+import { RemoveSpecieUseCase } from '../core/application/Specie/RemoveSpecie/RemoveSpecieUseCase';
+import { UpdateSpecieOutPut, UpdateSpecieUseCase } from '../core/application/Specie/UpdateSpecie/UpdateSpecieUseCase';
+import { UpdateProps } from '../core/domain/models/Specie';
 
 @Injectable()
 export class SpecieService {
-  species: Specie[] = [];
+  constructor(
+    private readonly _findAllSpecieUseCase: FindAllSpeciesUseCase,
+    private readonly _findOneSpecieUseCase: FindOneSpecieUseCase,
+    private readonly _createSpecieUseCase: CreateSpecieUseCase,
+    private readonly _updateSpecieUseCase: UpdateSpecieUseCase,
+    private readonly _removeSpecieUseCase: RemoveSpecieUseCase
+  ) { }
 
-  async create(createSpecieDto: CreateSpecieDto) {
-    const specie = new Specie(
-      createSpecieDto.shortDescription,
-      createSpecieDto.mythology,
-    );
-
-    this.species.push(specie);
-
-    return specie;
+  async findAll(): Promise<FindAllSpecieOutput[]> {
+    return await this._findAllSpecieUseCase.execute()
   }
 
-  async findAll() {
-    return this.species;
+  async findOne(id: string): Promise<FindOneSpecieOutPut> {
+    return await this._findOneSpecieUseCase.execute(id)
   }
 
-  async findOne(id: string) {
-    await this.findIndex(id);
-    return this.species.filter((specie) => specie.id === id);
+  async create(data: CreateSpecieInput): Promise<CreateSpecieOutput> {
+    return await this._createSpecieUseCase.execute(data)
   }
 
-  async update(id: string, { mythology, shortDescription }: UpdateSpecieDto) {
-    const specieIndex = await this.findIndex(id);
-
-    this.species.map((p) => {
-      if (p.id === id) {
-        if (mythology) this.species[specieIndex].mythology = mythology;
-        if (shortDescription)
-          this.species[specieIndex].shortDescription = shortDescription;
-      }
-    });
-
-    this.species[specieIndex].validate();
-    return await this.findOne(id);
+  async update(id:string, data: UpdateProps): Promise<UpdateSpecieOutPut> {
+    return await this._updateSpecieUseCase.execute(id, data)
   }
 
   async remove(id: string): Promise<void> {
-    await this.findIndex(id);
-    this.species = this.species.filter((s) => s.id != id);
+    await this._removeSpecieUseCase.execute(id)
   }
 
-  private async findIndex(id: string): Promise<number> {
-    const specieIndex = this.species.findIndex((specie) => specie.id === id);
-    if (specieIndex === -1)
-      throw new HttpException('Specie not Found', HttpStatus.NOT_FOUND);
-    return specieIndex;
-  }
 }

@@ -17,12 +17,6 @@ import { UpdateSpecieDto } from './dto/update-specie.dto';
 export class SpecieController {
   constructor(private readonly specieService: SpecieService) {}
 
-  @Post()
-  @UsePipes(ValidationPipe)
-  async create(@Body() createSpecieDto: CreateSpecieDto) {
-    return await this.specieService.create(createSpecieDto);
-  }
-
   @Get()
   async findAll() {
     return await this.specieService.findAll();
@@ -31,6 +25,12 @@ export class SpecieController {
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return await this.specieService.findOne(id);
+  }
+
+  @Post()
+  @UsePipes(ValidationPipe)
+  async create(@Body() createSpecieDto: CreateSpecieDto) {
+    return await this.specieService.create(createSpecieDto);
   }
 
   @Put(':id')
