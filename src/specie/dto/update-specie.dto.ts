@@ -1,4 +1,13 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateSpecieDto } from './create-specie.dto';
+import { IsNotEmpty, IsString } from 'class-validator';
 
-export class UpdateSpecieDto extends PartialType(CreateSpecieDto) {}
+export class UpdateSpecieDto{
+
+    @IsNotEmpty()
+    @IsString()
+    mythology:string;
+
+    @IsNotEmpty()
+    @IsString()
+    shortDescription:string
+
+}

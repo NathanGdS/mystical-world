@@ -4,6 +4,12 @@ import { readFileSync, createReadStream } from "fs"
 import { StreamableFile } from '@nestjs/common';
 import { join } from 'path';
 
+class VersionMock {
+  getFile() {
+    return Buffer.from("prod-main-0001")
+  }
+}
+
 describe('FileController', () => {
   let controller: FileController;
 
@@ -13,9 +19,7 @@ describe('FileController', () => {
        FileController,
        {
          provide: FileController,
-         useValue: {
-          getFile: jest.fn(() => readFileSync("VERSION", {encoding:'utf8', flag:'r'}))
-         }
+         useClass: VersionMock
        }
      ]
     }).compile();
@@ -30,6 +34,8 @@ describe('FileController', () => {
 
   it('should return the file version', async () => {
     const expected = readFileSync("VERSION", {encoding:'utf8', flag:'r'})
-    expect(controller.getFile()).toStrictEqual(expected)
+    const received = controller.getFile()
+    const data = received.toString()
+    expect(data).toStrictEqual(expected)
   })
 });

@@ -2,7 +2,7 @@ import { Controller, Get, StreamableFile } from '@nestjs/common';
 import { createReadStream } from 'fs';
 import { join } from 'path';
 
-@Controller('file')
+@Controller('version')
 export class FileController {
     @Get()
     getFile(): StreamableFile {
