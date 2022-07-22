@@ -1,10 +1,15 @@
 import { randomUUID } from "node:crypto"
 
-type TitleProps = {
+export type TitleProps = {
     name: string;
     description: string;
     createdAt?: Date;
     updatedAt?: Date;
+}
+
+export type UpdateTitleProps = {
+    name: string;
+    description: string;
 }
 
 export class Title {
@@ -46,7 +51,7 @@ export class Title {
     }
 
 
-    update({name, description}: TitleProps) {
+    update({name, description}: UpdateTitleProps) {
         this.name = name;
         this.description = description;
         this.updatedAt = new Date();
