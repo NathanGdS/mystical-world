@@ -50,6 +50,10 @@ export class Title {
         this.props.updatedAt = value
     }
 
+    get createdAt (): Date {
+        return this.props.createdAt;
+    }
+
 
     update({name, description}: UpdateTitleProps) {
         this.name = name;
