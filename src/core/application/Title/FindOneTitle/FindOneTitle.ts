@@ -8,7 +8,9 @@ export class FindOneTtitleUseCase {
     ) { }
 
     async execute(id: string): Promise<FindOneTitleOutput> {
-        return (await this._repository.findOne(id)).toJSON()
+       const result = await this._repository.findOne(id);
+       if (!result) throw new Error("Id not found");
+       return result.toJSON()
     }
 }
 
