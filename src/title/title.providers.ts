@@ -10,61 +10,40 @@ import { TitleService } from "./title.service";
 export namespace TITLE_PROVIDERS {
     const instance = TitleRepositoryInMemory;
 
-    namespace REPOSITORY {
-        export const values = {
-            provide: instance,
-            useClass: instance
+    const buildProviders = (useCases: any) => {
+        let providers = [];
+
+        let i =0;
+        while (useCases[i]) {
+            const useCase: any = useCases[i];
+            const provider = {
+                provide: useCase,
+                useFactory: (repository: ITitleRepository) => new useCase(repository),
+                inject: [instance]
+            }
+            providers.push(provider);
+            i++;
         }
+        return providers
     }
 
-    namespace INDEX_TITLE_USECASE {
-        export const values = {
-            provide: FindAllTitlesUseCase,
-            useFactory: (titleRepository: ITitleRepository) => new FindAllTitlesUseCase(titleRepository),
-            inject: [instance]
-        }
+    const repositories = {
+        provide: instance,
+        useClass: instance
     }
 
-    namespace FINDONE_TITLE_USECASE {
-        export const values = {
-            provide: FindOneTitleUseCase,
-            useFactory: (titleRepository: ITitleRepository) => new FindOneTitleUseCase(titleRepository),
-            inject: [instance]
-        }
-    }
-
-    namespace CREATE_TITLE_USECASE {
-        export const values = {
-            provide: CreateTitleUseCase,
-            useFactory: (titleRepository: ITitleRepository) => new CreateTitleUseCase(titleRepository),
-            inject: [instance]
-        }
-    }
-
-    namespace UPDATE_TITLE_USECASE {
-        export const values = {
-            provide: UpdateTitleUseCase,
-            useFactory: (titleRepository: ITitleRepository) => new UpdateTitleUseCase(titleRepository),
-            inject: [instance]
-        }
-    }
-
-    namespace REMOVE_TITLE_USECASE {
-        export const values = {
-            provide: RemoveTitleUseCase,
-            useFactory: (titleRepository: ITitleRepository) => new RemoveTitleUseCase(titleRepository),
-            inject: [instance] 
-        }
-    }
+    const providers = buildProviders([
+        FindAllTitlesUseCase,
+        FindOneTitleUseCase,
+        CreateTitleUseCase,
+        UpdateTitleUseCase,
+        RemoveTitleUseCase
+    ])
 
     export const values = [
         TitleService,
-        REPOSITORY.values,
-        INDEX_TITLE_USECASE.values,
-        FINDONE_TITLE_USECASE.values,
-        CREATE_TITLE_USECASE.values,
-        UPDATE_TITLE_USECASE.values,
-        REMOVE_TITLE_USECASE.values
+        repositories,
+        ...providers
     ]
 
 }
