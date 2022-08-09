@@ -1,0 +1,1 @@
+This project was created to exercice Clean Architecture with Nest.js
