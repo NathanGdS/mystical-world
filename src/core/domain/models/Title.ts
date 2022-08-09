@@ -56,8 +56,8 @@ export class Title {
 
 
     update({name, description}: UpdateTitleProps) {
-        this.name = name;
-        this.description = description;
+        if (name) this.name = name;
+        if (description) this.description = description;
         this.updatedAt = new Date();
     }
 

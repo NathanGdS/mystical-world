@@ -1,17 +1,17 @@
 import { TitleRepositoryInMemory } from "../../../infra/repositories/InMemory/TitleRepositoryInMemory";
 import { CreateTitleUseCase } from "../CreateTitle/CreateTitleUseCase";
-import { FindOneTtitleUseCase } from "./FindOneTitle";
+import { FindOneTitleUseCase } from "./FindOneTitle";
 
 
 
 let repository: TitleRepositoryInMemory;
-let useCase: FindOneTtitleUseCase;
+let useCase: FindOneTitleUseCase;
 let createTitleUseCase: CreateTitleUseCase;
 
 describe("FindOneTitleUseCase", () => {
     beforeEach(() => {
         repository = new TitleRepositoryInMemory();
-        useCase = new FindOneTtitleUseCase(repository);
+        useCase = new FindOneTitleUseCase(repository);
         createTitleUseCase = new CreateTitleUseCase(repository);
     })
 

@@ -1,8 +1,6 @@
 import { ITitleRepository } from "../../../domain/repositories/ITitleRepository";
 
-
-
-export class FindOneTtitleUseCase {
+export class FindOneTitleUseCase {
     constructor(
         private readonly _repository: ITitleRepository
     ) { }
