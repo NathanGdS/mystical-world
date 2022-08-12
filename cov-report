@@ -1,18 +1,18 @@
 ---------------------------------------|---------|----------|---------|---------|-------------------
 File                                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------------------------|---------|----------|---------|---------|-------------------
-All files                              |   74.87 |      100 |    68.6 |   72.67 |                   
+All files                              |   65.46 |      100 |   70.93 |   64.32 |                   
  core/application/Specie/CreateSpecie  |     100 |      100 |     100 |     100 |                   
   CreateSpecieUseCase.ts               |     100 |      100 |     100 |     100 |                   
  core/application/Specie/FindAllSpecie |     100 |      100 |     100 |     100 |                   
-  FindAllSpecieUseCase.ts              |     100 |      100 |     100 |     100 | 
- core/application/Specie/FindOneSpecie |     100 |      100 |     100 |     100 | 
+  FindAllSpecieUseCase.ts              |     100 |      100 |     100 |     100 |                   
+ core/application/Specie/FindOneSpecie |     100 |      100 |     100 |     100 |                   
   FindOneSpecieUseCase.ts              |     100 |      100 |     100 |     100 | 
  core/application/Specie/RemoveSpecie  |     100 |      100 |     100 |     100 | 
   RemoveSpecieUseCase.ts               |     100 |      100 |     100 |     100 | 
  core/application/Specie/UpdateSpecie  |     100 |      100 |     100 |     100 | 
   UpdateSpecieUseCase.ts               |     100 |      100 |     100 |     100 | 
- core/application/Title/CreateTitle    |     100 |      100 |     100 |     100 |                   
+ core/application/Title/CreateTitle    |     100 |      100 |     100 |     100 | 
   CreateTitleUseCase.ts                |     100 |      100 |     100 |     100 | 
  core/application/Title/FindAllTitles  |     100 |      100 |     100 |     100 | 
   FindAllTitlesUseCase.ts              |     100 |      100 |     100 |     100 | 
@@ -22,9 +22,9 @@ All files                              |   74.87 |      100 |    68.6 |   72.67 
   RemoveTitleUseCase.ts                |     100 |      100 |     100 |     100 | 
  core/application/Title/UpdateTitle    |     100 |      100 |     100 |     100 | 
   UpdateTitleUseCase.ts                |     100 |      100 |     100 |     100 | 
- core/domain/models                    |   94.28 |      100 |    90.9 |   93.93 | 
+ core/domain/models                    |     100 |      100 |     100 |     100 | 
   Specie.ts                            |     100 |      100 |     100 |     100 | 
-  Title.ts                             |   88.23 |      100 |      80 |   86.66 | 46,54
+  Title.ts                             |     100 |      100 |     100 |     100 | 
  core/infra/repositories/InMemory      |     100 |      100 |     100 |     100 | 
   SpecieRepositoryInMemory.ts          |     100 |      100 |     100 |     100 | 
   TitleRepositoryInMemory.ts           |     100 |      100 |     100 |     100 | 
@@ -33,9 +33,7 @@ All files                              |   74.87 |      100 |    68.6 |   72.67 
  specie                                |   24.32 |      100 |       0 |   21.21 | 
   specie.controller.ts                 |       0 |      100 |       0 |       0 | 1-47
   specie.service.ts                    |   47.36 |      100 |       0 |   41.17 | 12-36
- title                                 |   56.75 |      100 |       0 |   51.51 | 
-  title.controller.ts                  |   66.66 |      100 |       0 |    62.5 | 8,12,17,22,27,32 
-  title.service.ts                     |   47.36 |      100 |       0 |   41.17 | 13-38
- title/entities                        |       0 |      100 |     100 |       0 | 
-  title.entity.ts                      |       0 |      100 |     100 |       0 | 1                 
+ title                                 |       0 |      100 |       0 |       0 | 
+  title.controller.ts                  |       0 |      100 |       0 |       0 | 1-32
+  title.service.ts                     |       0 |      100 |       0 |       0 | 1-38
 ---------------------------------------|---------|----------|---------|---------|-------------------

@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto"
+import { randomUUID } from "node:crypto";
 
 export type TitleProps = {
     name: string;
@@ -64,7 +64,10 @@ export class Title {
     toJSON() {
         return {
             id: this.id,
-            ...this.props
+            name: this.name,
+            description: this.description,
+            createdAt: this.createdAt,
+            updatedAt: this.updatedAt
         }
     }
 }
