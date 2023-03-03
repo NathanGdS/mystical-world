@@ -1,11 +1,19 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { CreateTitleDto } from './dto/create-title.dto';
 import { UpdateTitleDto } from './dto/update-title.dto';
 import { TitleService } from './title.service';
 
 @Controller('title')
 export class TitleController {
-  constructor(private readonly titleService: TitleService) { }
+  constructor(private readonly titleService: TitleService) {}
 
   @Post()
   async create(@Body() createTitleDto: CreateTitleDto) {
@@ -23,12 +31,15 @@ export class TitleController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() updateTitleDto: UpdateTitleDto) {
+  async update(
+    @Param('id') id: string,
+    @Body() updateTitleDto: UpdateTitleDto,
+  ) {
     return await this.titleService.update(id, updateTitleDto);
   }
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-   await this.titleService.remove(id)
+    await this.titleService.remove(id);
   }
 }

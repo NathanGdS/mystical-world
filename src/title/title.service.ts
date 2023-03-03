@@ -9,21 +9,20 @@ import { UpdateTitleDto } from './dto/update-title.dto';
 
 @Injectable()
 export class TitleService {
-  constructor (
+  constructor(
     private readonly _createTitleUseCase: CreateTitleUseCase,
     private readonly _findAllTitleUseCase: FindAllTitlesUseCase,
     private readonly _findOneTitleUseCase: FindOneTitleUseCase,
     private readonly _updateTitleUseCase: UpdateTitleUseCase,
-    private readonly _removeTitleUseCase: RemoveTitleUseCase
-  ) { }
-
+    private readonly _removeTitleUseCase: RemoveTitleUseCase,
+  ) {}
 
   async create(createTitleDto: CreateTitleDto) {
-    return await this._createTitleUseCase.execute(createTitleDto)
+    return await this._createTitleUseCase.execute(createTitleDto);
   }
 
   async findAll() {
-    return await this._findAllTitleUseCase.execute()
+    return await this._findAllTitleUseCase.execute();
   }
 
   async findOne(id: string) {
@@ -31,10 +30,10 @@ export class TitleService {
   }
 
   async update(id: string, updateTitleDto: UpdateTitleDto) {
-    return await this._updateTitleUseCase.execute(id, updateTitleDto)
+    return await this._updateTitleUseCase.execute(id, updateTitleDto);
   }
 
   async remove(id: string) {
-    await this._removeTitleUseCase.execute(id)
+    await this._removeTitleUseCase.execute(id);
   }
 }

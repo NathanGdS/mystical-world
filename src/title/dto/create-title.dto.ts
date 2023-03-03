@@ -1,4 +1,4 @@
 export class CreateTitleDto {
-    name: string;
-    description: string;
+  name: string;
+  description: string;
 }

@@ -1,8 +1,4 @@
-import { Title, UpdateTitleProps } from "../models/Title";
-import { IBaseRepository } from "./IBaseRepository";
+import { Title, UpdateTitleProps } from '../models/Title';
+import { IBaseRepository } from './IBaseRepository';
 
-
-
-export interface ITitleRepository extends IBaseRepository<Title, UpdateTitleProps> {
-
-}
+export type ITitleRepository = IBaseRepository<Title, UpdateTitleProps>;

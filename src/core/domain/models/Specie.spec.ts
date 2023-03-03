@@ -1,55 +1,55 @@
-import { Specie, SpecieProps, UpdateProps } from "./Specie"
+import { Specie, SpecieProps, UpdateProps } from './Specie';
 
-describe("Specie", () => {
-    it('Constructor', () => {
-        const specieProps: SpecieProps = {
-            mythology: "Test Mythology",
-            shortDescription: "Mythology"
-        }
-        const specie: Specie = new Specie(specieProps);
-        
-        expect(specie.id).toBeDefined()
-        expect(specie.createdAt).toBeDefined()
-        expect(specie.mythology).toStrictEqual(specieProps.mythology)
-        expect(specie.shortDescription).toStrictEqual(specieProps.shortDescription)
-    })
+describe('Specie', () => {
+  it('Constructor', () => {
+    const specieProps: SpecieProps = {
+      mythology: 'Test Mythology',
+      shortDescription: 'Mythology',
+    };
+    const specie: Specie = new Specie(specieProps);
 
-    it('updateShortDescrption method', () => {
-        const specieProps: SpecieProps = {
-            mythology: "Test Mythology",
-            shortDescription: "Mythology"
-        }
-        const specie: Specie = new Specie(specieProps);
-        specie.updateShortDescription('updated')
-        expect(specie.shortDescription).toStrictEqual('updated')
-        expect(specie.updatedAt).toBeDefined()
-    })
+    expect(specie.id).toBeDefined();
+    expect(specie.createdAt).toBeDefined();
+    expect(specie.mythology).toStrictEqual(specieProps.mythology);
+    expect(specie.shortDescription).toStrictEqual(specieProps.shortDescription);
+  });
 
-    it('updateMythology method', () => {
-        const specieProps: SpecieProps = {
-            mythology: "Test Mythology",
-            shortDescription: "Mythology"
-        }
-        const specie: Specie = new Specie(specieProps);
-        specie.updateMythology('updated')
-        expect(specie.mythology).toStrictEqual('updated')
-        expect(specie.updatedAt).toBeDefined()
-    })
+  it('updateShortDescrption method', () => {
+    const specieProps: SpecieProps = {
+      mythology: 'Test Mythology',
+      shortDescription: 'Mythology',
+    };
+    const specie: Specie = new Specie(specieProps);
+    specie.updateShortDescription('updated');
+    expect(specie.shortDescription).toStrictEqual('updated');
+    expect(specie.updatedAt).toBeDefined();
+  });
 
-    it('updateAll method', () => {
-        const specieProps: SpecieProps = {
-            mythology: "Test Mythology",
-            shortDescription: "Mythology"
-        }
-        const specie: Specie = new Specie(specieProps);
+  it('updateMythology method', () => {
+    const specieProps: SpecieProps = {
+      mythology: 'Test Mythology',
+      shortDescription: 'Mythology',
+    };
+    const specie: Specie = new Specie(specieProps);
+    specie.updateMythology('updated');
+    expect(specie.mythology).toStrictEqual('updated');
+    expect(specie.updatedAt).toBeDefined();
+  });
 
-        const updateObj: UpdateProps = {
-            mythology: "New Mythology",
-            shortDescription: "New Short Description"
-        }
+  it('updateAll method', () => {
+    const specieProps: SpecieProps = {
+      mythology: 'Test Mythology',
+      shortDescription: 'Mythology',
+    };
+    const specie: Specie = new Specie(specieProps);
 
-        specie.updateAll(updateObj)
-        expect(specie.mythology).toStrictEqual(updateObj.mythology)
-        expect(specie.shortDescription).toStrictEqual(updateObj.shortDescription)
-    })
-})
+    const updateObj: UpdateProps = {
+      mythology: 'New Mythology',
+      shortDescription: 'New Short Description',
+    };
+
+    specie.updateAll(updateObj);
+    expect(specie.mythology).toStrictEqual(updateObj.mythology);
+    expect(specie.shortDescription).toStrictEqual(updateObj.shortDescription);
+  });
+});

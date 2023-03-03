@@ -1,5 +1,4 @@
-
 export class UpdateTitleDto {
-    name: string;
-    description: string;
+  name: string;
+  description: string;
 }
